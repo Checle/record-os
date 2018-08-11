@@ -1,1 +1,6 @@
 script: make
+
+branches:
+  only:
+    - master
+    - stable

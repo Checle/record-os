@@ -2,7 +2,7 @@ bin/kernel.img: linux/arch/x86/boot/bzImage bin
 	cp linux/arch/x86/boot/bzImage bin/kernel.img
 
 bin/fs.cpio.gz: bin/fs
-	cd bin/fs && find . | cpio -H newc -o | gzip > bin/fs.cpio.gz
+	cd bin/fs && find . | cpio -H newc -o | gzip > ../fs.cpio.gz
 
 bin/fs: init busybox/busybox bin
 	mkdir -p bin/fs && git clean -dfx bin/fs/
@@ -13,7 +13,7 @@ bin:
 	mkdir -p bin
 
 busybox/.config:
-	make defconfig
+	cd busybox && make defconfig
 
 busybox/busybox: busybox/.config
 	cd busybox && make
